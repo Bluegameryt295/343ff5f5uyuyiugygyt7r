@@ -575,58 +575,39 @@ client.on("guildMemberAdd", (member) => {
     })
 });
 
+const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
 
-
- client.on("message", message => {
- if (message.content === "R!help") {
-     message.channel.send('**:mailbox_with_mail: تم ارسال رسالة في الخاص** :mailbox_with_mail: ');
-  const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-      .setDescription(`
-             
-=====================🌈 RainbowBot. 🌈=====================
-R!set = لبدا وانشاء رتبه الرينبو | Rainbow Start & Create Rainbow Role
-R!invite = لاضافه البوت | Bot Invite
-**!ملاحظه: اذا ما شتغل البوت جرب تحط رتبه البوت اعلى من رتبه الرينبو ** 
-**NOTE: If the bot is working, try to drop the bot role higher than the Rainbow role !**
-=====================🌈 RainbowBot. 🌈=====================
-`)
-   message.author.sendEmbed(embed)
-   
-   }
-   });
-   client.on("message", message => {
- if(message.content.startsWith(prefix + "set")) {
-   let rainbow = message.guild.roles.find(`name`, "Rainbow");
-  //start of create role
-  if(!rainbow){
-         rainbow =  message.guild.createRole({
-        name: "Rainbow",
-        color: "#000000",
-        permissions:[]
-      })
-    }}})
-  
-
-
-    client.on("message", message => {
-console.log('Welcome')
-    const config = require('./config.json');
- const roles = config.roleToDisco;
-  function discoRole() {
-    let random = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-    roles.forEach((role) => {
-      let theRole = message.guild.roles.find("name", role);
-      if(!theRole) return;
- {
-
-        client.on('ready', () => {                           
-
-        return setInterval(() => { discoRole(); }, config.ms);
-        theRole.edit({color: random}).catch(e => {
-      })
-    })
-}})
-  }})
+client.on("message", message => {
+    fs.writeFile('./suck.json', JSON.stringify(suck));
+});
+client.on('ready', () => {
+    setInterval(function(){
+        client.guilds.forEach(g => {
+            if (suck[g.id]) {
+                if (suck[g.id].role) {
+                    var role = g.roles.get(suck[g.id].role);
+                    if (role) {
+                        role.edit({color : "RANDOM"});
+                    };
+                };
+            };
+        });
+    }, 1500);
+});
+client.on("message", message => {
+    if (!message.content.startsWith(prefix)) return;
+    if (message.author.bot) return;
+    if (message.channel.type !== "text") return message.reply("This Command Is Only Allowed In Servers");
+    var args = message.content.split(" ");
+    var command = args[0].slice(prefix.length);
+    switch(command) {
+        case "rainbow" :
+        if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("no no");
+        message.guild.createRole({name : "rainbow", color : "RANDOM"}).then(r => {
+            r.edit({color : "RANDOm"});
+            suck[message.guild.id] = {role : r.id};
+        });
+    };
+});
 
 client.login(process.env.BOT_TOKEN);
