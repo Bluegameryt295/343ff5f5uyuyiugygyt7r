@@ -1184,7 +1184,7 @@ https://pastebin.com/hP9VQpFR
 });
   
 
-const code = '-';
+const code = '#';
 
 client.on('message',async message => {
     if(message.content.startsWith(code + "js")) {
@@ -2067,7 +2067,7 @@ hours = 12;
 }
 
   var filter = m => m.author.id === message.author.id;
-  if(message.content.startsWith(prefix + "giveaway")) {
+  if(message.content.startsWith(prefix + "ggiveaway")) {
 
     if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
     message.channel.send(`:eight_pointed_black_star:| **Send Name channel For the Giveaway**`).then(msg => {
