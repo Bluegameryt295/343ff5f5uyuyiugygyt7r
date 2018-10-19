@@ -1569,4 +1569,291 @@ if (message.content.startsWith(prefix + "uptime")) {
 });
 
 
+
+
+
+  client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help2") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("╔[❖════════════❖]╗",' ‎ ')
+ .addField("      اوامر عامه      ",' ‎ ')
+ .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
+  .addField("❖ #roll <number> ➾ قرعة ⦁",' ‎ ')
+   .addField("❖ #member ➾ معلومات الاعضاء ⦁",' ‎ ')
+     .addField("❖ #av ➾ صورة حسابك ⦁",' ‎ ')
+	   .addField("❖ #ser-av ➾ صورة السيرفر ⦁",' ‎ ')
+	 	   .addField("❖ #uptime ➾ مدة تشغيل البوت ⦁",' ‎ ')
+		   	   .addField("❖ #id ➾ اي دي ⦁",' ‎ ')
+		   	   .addField("❖ #inv ➾ رابط السيرفر ⦁",' ‎ ')
+.addField("❖ #own ➾ مسؤول البوت⦁",' ‎ ')
+.addField("❖ #top inv ➾ اكثر شخص بالدعوات ⦁",' ‎ ')
+.addField("❖ ❖ #ping ➾ عرض سرعه اتصال البوت ⦁",' ‎ ')
+.addField("❖ ❖ #server ➾ معلومات عن السيرفر ⦁",' ‎ ')
+
+ .setFooter('Discord.JPEI')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+  client.on('message', message => {
+if (message.content === prefix + 'help-eris') {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("╔[❖════════════❖]╗",' ‎ ')
+ .addField("      تحت الصيانه     ",' ‎ ')
+ .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
+
+ .setFooter('Discord.JPEI')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+  client.on('message', message => {
+if (message.content === prefix + 'help-io') {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("╔[❖════════════❖]╗",' ‎ ')
+ .addField("      تحت الصيانه     ",' ‎ ')
+ .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
+
+ .setFooter('Discord.JPEI')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+
+       client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-py") {
+          const embed = new Discord.RichEmbed()
+   .addField("❖ #help-py-source ➾  ⦁",' ‎ ')
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+ .addField("⦁`All types of codes in D.JPEI Server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-py-source    ➺      ⦁ قسم السورس الأساسي** ⦁",' ‎ ')
+   .addField("❧  **#help-py-admin     ➺      ⦁ قسم الأكواد الإدارية** ⦁",' ‎ ')
+     .addField("❧  **سيتم اضافة المزيد ان شاء الله*** ⦁",' ‎ ')
+	  
+	  
+ .setFooter('Discord.JPEI')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+  
+
+       client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "#help-py-source") {
+          const embed = new Discord.RichEmbed()
+   .addField("❖ #help-py-source ➾  ⦁",' ‎ ')
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+ .addField("⦁`All types of codes in D.JPEI Server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-py-source-1    ➺      ⦁   السورس الأساسي + البيرفكس** ⦁",' ‎ ')
+   .addField("❧  **#help-py-source-2     ➺      ⦁ السورس الاساسي من غير بير فكس** ⦁",' ‎ ')
+
+	  
+	  
+ .setFooter('Discord.JPEI')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-source-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **السور الاساسي مع البيرفكس**
+ https://pastebin.com/3EnXmuik
+`);
+
+    }
+});
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-source-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **السورس الاساسي من غير بيرفكس**
+ https://pastebin.com/tG8yr5fL
+`);
+
+    }
+});
+
+
+
+
+       client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "#help-py-admin") {
+          const embed = new Discord.RichEmbed()
+   .addField("❖ #help-py-source ➾  ⦁",' ‎ ')
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+ .addField("⦁`All types of codes in D.JPEI Server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-py-admin-1    ➺      ⦁   كود اذا دخل البوت لسيرفر يعطيك معلومات عنه + امبد للبايثونوبس** ⦁",' ‎ ')
+   .addField("❧  **#help-py-admin-2     ➺      ⦁ كود يغيرلك النك نيم حقك فالسيرفر** ⦁",' ‎ ')
+   .addField("❧  **#help-py-admin-3     ➺      ⦁ كود يجيبلك الأيموجيز حقت السيرفر** ⦁",' ‎ ')
+	  
+	  
+ .setFooter('Discord.JPEI')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+
+
+
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-admin-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود اذا دخل البوت لسيرفر يعطيك معلومات عنه + امبد للبايثونوبس**
+ https://pastebin.com/mPzgeBt6
+`);
+
+    }
+});
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-admin-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود يغيرلك النك نيم حقك فالسيرفر**
+ https://pastebin.com/Sb67xRLc
+`);
+
+    }
+});
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-admin-3") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود يجيبلك الأيموجيز حقت السيرفر**
+ https://pastebin.com/LarMXgLH
+`);
+
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+  client.on('message', message => {
+if (message.content === prefix + 'help3') {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("╔[❖════════════❖]╗",' ‎ ')
+ .addField("      تحت الصيانه     ",' ‎ ')
+ .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
+
+ .setFooter('Discord.JPEI')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
