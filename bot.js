@@ -285,18 +285,18 @@ client.on('message',message =>{
       message.delete(3500);
     });
  
-    let mention = message.mentions.members.first();//kinggamer حقوق الفا كودز و
-    if(!mention) return  message.channel.send('').then(msg => { //kinggamer حقوق الفا كودز و
+    let mention = message.mentions.members.first();
+    if(!mention) return  message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
  
     if(mention.id === message.author.id) return message.channel.send('**:x:You Cannot give mute to your self**').then(msg => {
       msg.delete(3500);
-      message.delete(3500); //kinggamer حقوق الفا كودز و
+      message.delete(3500);
     });
    
-    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`**:x: لا يمكن آعطاء ميوت لادارة السيرفر**`); //kinggamer حقوق الفا كودز و
+    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`**:x: لا يمكن آعطاء ميوت لادارة السيرفر**`); 
  
     if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source: ${mention.user.username} Already Muted**`);
  
@@ -308,7 +308,7 @@ client.on('message',message =>{
    
     if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('I Donot Have Permission **Muted_Members**').then(msg => {
       msg.delete(3500);
-      message.delete(3500); //kinggamer حقوق الفا كودز و
+      message.delete(3500);
     });
    
     let duration = args[2];
@@ -328,7 +328,7 @@ client.on('message',message =>{
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .setTitle('**تم آعطائك ميوت**')
-    .addField('**__السيرفر__**',[ message.guild.name ]) //kinggamer حقوق الفا كودز و
+    .addField('**__السيرفر__**',[ message.guild.name ])
     .addField('**__تم آعطائك ميوت بواسطة__**', [ message.author ])
     .addField('**__آلسبب__**',reason)
     .addField('**__وقت الميوت__**',duration)
@@ -337,36 +337,36 @@ client.on('message',message =>{
     if(!role) try {
       message.guild.createRole({
         name: "Muted",
-        permissions: 0 //kinggamer حقوق الفا كودز و
+        permissions: 0 
       }).then(r => {
         message.guild.channels.forEach(c => {
           c.overwritePermissions(r , {
-            SEND_MESSAGES: false, //kinggamer حقوق الفا كودز و
+            SEND_MESSAGES: false,
             READ_MESSAGES_HISTORY: false,
             ADD_REACTIONS: false
           });
         });
-      }); //kinggamer حقوق الفا كودز و
+      }); 
     } catch(e) {
       console.log(e.stack);
     }
     mention.addRole(role).then(() => {
       mention.send(thisEmbed);
       message.channel.send(`**:white_check_mark: ${mention.user.username}  Muted! :zipper_mouth:  **  `);
-      mention.setMute(true); //kinggamer حقوق الفا كودز و
+      mention.setMute(true);
     });
     setTimeout(() => {
       if(duration === 0) return;
       mention.setMute(false);
       mention.removeRole(role)
-    },duration * 60000); //kinggamer حقوق الفا كودز و
+    },duration * 60000);
   }
 });
 client.on('message', async message => {
     let mention = message.mentions.members.first();
 let command = message.content.split(" ")[0];
      command = command.slice(prefix.length);
-    let args = message.content.split(" ").slice(1);  //kinggamer حقوق الفا كودز و
+    let args = message.content.split(" ").slice(1);
 if(command === `unmute`) {2
   if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**You Donot HavePermission Mute_Members**").then(m => m.delete(5000));
 if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I donot Have Permission Mute_Members**").then(msg => msg.delete(6000))
@@ -374,14 +374,13 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
   let kinggamer = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
      if(!kinggamer) return message.channel.send('').then(msg => {
       msg.delete(3500);
-      message.delete(3500); //kinggamer حقوق الفا كودز و
-    });
+      message.delete(3500);
  
   let role = message.guild.roles.find (r => r.name === "Muted");
  
   if(!role || !kinggamer.roles.has(role.id)) return message.channel.sendMessage(`**:information_source:${mention.user.username} لقد تم فك الميوت عنه مسبقا**`)
  
-  await kinggamer.removeRole(role) //kinggamer حقوق الفا كودز و
+  await kinggamer.removeRole(role)
   message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmuted! **`);
  
   return;
@@ -436,32 +435,7 @@ client.on("ready", () => {
         })
     })
 })
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'welcome');
-    if (!channel) {
-        console.log("!channel fails");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('made it till here!');
-    var guild;
-    while (!guild)
-        guild = client.guilds.find("name", "BlueBot Codes.")
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
-                    console.log(3);
-                    console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
- channel.send(` ♥ **تم دعوته من قبل ${Invite.inviter}** ♥ `)            
- }
-            dat[Inv] = Invite.uses;
-        })
-    })
-});
+
 
 const fs = require("fs")
 const ar = JSON.parse(fs.readFileSync("./AutoRole.json", "UTF8"))
@@ -528,37 +502,6 @@ Role : __${ar[message.guild.id].role}__`)
 client.on('message',function(message) {
   if(!message.channel.guild) return;
 
-const prefix = "#";
-    if (message.content === prefix + "discrim") {
-let messageArray = message.content.split(" ");
-let args = messageArray.slice(1);
-
-if (message.author.bot) return;
-
-var discri = args[0]
-let discrim
-if(discri){
-discrim = discri;
-}else{
-discrim = message.author.discriminator;
-}
-if(discrim.length == 1){
-discrim = "000"+discrim
-}
-if(discrim.length == 2){
-discrim = "00"+discrim
-}
-if(discrim.length == 3){
-discrim = "0"+discrim
-}
-
-const users = client.users.filter(user => user.discriminator === discrim).map(user => user.username);
-return message.channel.send(`
-**Found ${users.length} users with the discriminator #${discrim}**
-${users.join('\n')}
-`);
-}
-});
 
 var dat = JSON.parse("{}");
 function forEachObject(obj, func) {
@@ -567,7 +510,7 @@ function forEachObject(obj, func) {
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "اسم سرفرك هنا")
+        guild = client.guilds.find("name", "BlueBot Codes.")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
