@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '-';
+const prefix = '#';
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`-help | BlueBot 💙✨ `,"https://www.twitch.tv/S-F")
+client.user.setGame(`BlueBot Codes.`,"https://www.twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -28,12 +28,11 @@ client.user.setGame(`-help | BlueBot 💙✨ `,"https://www.twitch.tv/S-F")
   console.log('')
 });
 
-
-
-client.on('message', message => {
-	if(message.author.bot) return;
-     if (message.content === "-ping") {
-      const embed = new Discord.RichEmbed()
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('Pong!');
+  }
+});
 
 
 client.login(process.env.BOT_TOKEN);
