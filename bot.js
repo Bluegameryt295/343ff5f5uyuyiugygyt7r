@@ -577,9 +577,8 @@ client.on("guildMemberAdd", (member) => {
 
 
 
-if (!suck) const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
+const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
 if (!prefix) const prefix = "!";
-// By M7MD
 client.on("message", message => {
     fs.writeFile('./suck.json', JSON.stringify(suck));
 });
