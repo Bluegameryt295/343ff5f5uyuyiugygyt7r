@@ -421,7 +421,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 client.on('message', message => {
 
 if(message.content.startsWith(prefix + 'hackban')) {
-if(premission)return message.reply(':x: | **You don\'t have `BAN_MEMBERS` permission to use this command**.')
+  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("** :x: | You Don't Have ` BAN_MEMBERS ` Permission**");
   let nourid = message.content.split(" ").slice(3).join(" ");
   client.fetchUser(nourid).then(id => {
     message.guild.ban(id).catch(err => {
