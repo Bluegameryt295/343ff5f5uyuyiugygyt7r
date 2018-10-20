@@ -2131,4 +2131,100 @@ hours = 12;
   }
 });
 
+
+client.on('message', async message => { 
+	if (message.author.bot)return;
+	if (message.content.startsWith("Nb.") && message.channel.type !== "text")return mesage.reply("Please use my commands in a server");
+	
+    if(!prefixes[message.guild.id]){
+    prefixes[message.guild.id] = {
+      prefixes: "Nb."
+    };
+  }
+  if(!credits[message.author.id]){
+    credits[message.author.id] = {
+      credits: 0
+    };
+  }
+  if(!lvlmsg[message.guild.id]){
+    lvlmsg[message.guild.id] = {
+      lvlmsg: "GG {mem.nick}, you just leveled up!"
+    };
+  }
+  if(!lvls[message.guild.id]){
+    lvls[message.guild.id] = {
+      lvls: "false"
+    };
+  }
+  if(!cookies[message.author.id]){
+    cookies[message.author.id] = {
+      cookies: 0
+    };
+  }
+
+
+  let coinAmt = Math.floor(Math.random() * 1) + 1;
+
+  if(coinAmt === coinAmt){
+    credits[message.author.id] = {
+      credits: credits[message.author.id].credits + coinAmt
+    };
+  fs.writeFile("./jsons/credits.json", JSON.stringify(credits), (err) => {
+    if (err) console.log(err)
+  });
+ }
+ 
+  let xpAdd = Math.floor(Math.random() * 7) + 8;
+
+  if(!xp[message.author.id]){
+    xp[message.author.id] = {
+      xp: 0,
+      level: 1
+    };
+  }
+  
+  let levelmsg = lvlmsg[message.guild.id].lvlmsg;
+  let cokis = cookies[message.author.id].cookies;
+  
+	if(lvls[message.guild.id].lvls === "true"){
+  let curxp = xp[message.author.id].xp;
+  let curlvl = xp[message.author.id].level;
+  let nxtLvl = xp[message.author.id].level * 800;
+  xp[message.author.id].xp =  curxp + xpAdd;
+  if(nxtLvl <= xp[message.author.id].xp){
+    xp[message.author.id].level = curlvl + 1;
+	cookies[message.author.id].cookies = cokis + 2;
+	if(levelmsg.includes("{mem.nick}")) levelmsg = levelmsg.replace("{mem.nick}", `${message.member.displayName}`);
+    if(levelmsg.includes("{mem}")) levelmsg = levelmsg.replace("{mem}", `${message.author}`);
+	message.channel.send(`${levelmsg}`).then(msg => {msg.delete(5000)});
+	}
+  fs.writeFile("./jsons/xp.json", JSON.stringify(xp), (err) => {
+    if(err) console.log(err)
+  });
+  fs.writeFile("./jsons/cookies.json", JSON.stringify(cookies), (err) => {
+    if(err) console.log(err)
+	});
+}
+  
+  let prefix = prefixes[message.guild.id].prefixes;
+  
+  if(message.content.startsWith(prefix) && client.user.presence.status === "invisible"){
+	  if(message.author.id !== '349095859859881984')return;
+  }
+
+  if (message.content == "Nb.prefix"){
+	  message.delete(10000);
+	  message.channel.send('The prefix for this server is: ``'+ prefix +'``').then(msg => {msg.delete(15000)});
+  }
+  
+});
+
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
