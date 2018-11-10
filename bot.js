@@ -306,7 +306,7 @@ client.on("ready", () => {
 
 
 
-
+const fs = require('fs');
 const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
 
 client.on("message", message => {
