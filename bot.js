@@ -61,7 +61,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 
 client.on('message', message => {
-   if (message.content === "#server") {
+   if (message.content === "#serverinf") {
        if (!message.channel.guild) return
        var verificationLevel = message.guild.verificationLevel;
        const verificationLevels = ['None','Low','Meduim','High','Extreme'];
@@ -87,8 +87,144 @@ client.on('message', message => {
    });
 
 
- 
+ client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+        
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 5,
+        maxAge: 86400
+    }).then(invite =>  
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("000000").setColor('#36393e')
+        .setDescription("| :white_check_mark: | 👍  تم ارسال الرابط على الخاص  ")
+        .setFooter("BlueBot Codes.")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("000000").setColor('#36393e')
+        .setDescription(`
+**-------------------
+-هذا هو الرابط 
+-ارسله للي تحب وحيآك انت وياه
+-ونورنا ياجميل :v: 
+------------------- **`)
+        .setFooter("By:iiBlueGamer295YT| SK .❤#6144")
+      message.author.sendEmbed(Embed11)
+    }
+});
    
+   
+  client.on('message', message => {
+    if (message.content.startsWith("link")) {
+        
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 5,
+        maxAge: 86400
+    }).then(invite =>  
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("000000").setColor('#36393e')
+        .setDescription("| :white_check_mark: | 👍  تم ارسال الرابط على الخاص  ")
+        .setFooter("BlueBot Codes.")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("000000").setColor('#36393e')
+        .setDescription(`
+**-------------------
+-هذا هو الرابط 
+-ارسله للي تحب وحيآك انت وياه
+-ونورنا ياجميل :v: 
+------------------- **`)
+        .setFooter("By:iiBlueGamer295YT| SK .❤#6144")
+      message.author.sendEmbed(Embed11)
+    }
+});
+   
+   
+    client.on('message', message => {
+    if (message.content.startsWith("Link")) {
+        
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 5,
+        maxAge: 86400
+    }).then(invite =>  
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("000000").setColor('#36393e')
+        .setDescription("| :white_check_mark: | 👍  تم ارسال الرابط على الخاص  ")
+        .setFooter("BlueBot Codes.")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("000000").setColor('#36393e')
+        .setDescription(`
+**-------------------
+-هذا هو الرابط 
+-ارسله للي تحب وحيآك انت وياه
+-ونورنا ياجميل :v: 
+------------------- **`)
+        .setFooter("By:iiBlueGamer295YT| SK .❤#6144")
+      message.author.sendEmbed(Embed11)
+    }
+});
+   
+ client.on('message', message => {
+    if (message.content.startsWith("LINK")) {
+        
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 5,
+        maxAge: 86400
+    }).then(invite =>  
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("000000").setColor('#36393e')
+        .setDescription("| :white_check_mark: | 👍  تم ارسال الرابط على الخاص  ")
+        .setFooter("BlueBot Codes.")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("000000").setColor('#36393e')
+        .setDescription(`
+**-------------------
+-هذا هو الرابط 
+-ارسله للي تحب وحيآك انت وياه
+-ونورنا ياجميل :v: 
+------------------- **`)
+        .setFooter("By:iiBlueGamer295YT| SK .❤#6144")
+      message.author.sendEmbed(Embed11)
+    }
+});
+   
+client.on('message',async message => {
+  let args = message.content.split(" ").slice(1).join(" ");
+  let role = message.guild.roles.find('name',args) || message.guild.roles.get(args);
+
+
+  if(message.content.startsWith(prefix + "Role")) {
+    if(!args) return message.reply('اكتب اسم الرتبة');
+    if(!role) return message.reply('هذه الرتبة غير موجودة');
+    let iQp = new Discord.RichEmbed()
+    .setAuthor(message.author.tag,message.author.avatarURL)
+    .setTitle(message.guild.name)
+    .setThumbnail(message.guild.iconURL)
+    .addField('- اسم الرتبة',role.name,true)
+    .addField('- اي دي الرتبة',role.id,true)
+    .addField('- تم انشاء الرتبة',role.createdAt.toLocaleString(),true)
+    .addField('- لون الرتبة',role.hexColor,true)
+    .addField('- عدد الاعضاء الذي لديهم نفس الرتبة',role.members.size,true)
+    .addField('- مركز الرتبة بين كل الرتب',role.position,true)
+    .addField('- خصائص الرتبة',role.permissions,true)
+    .setFooter(message.author.tag,message.author.avatarURL);
+
+    message.channel.send(iQp);
+  }
+});
 
 
 
@@ -107,7 +243,33 @@ client.on('message', message => {
     }
 });
 
-
+client.on('message',message =>{
+    var prefix = "#";
+    if(message.content.startsWith(prefix + 'invites')) {
+  message.guild.fetchInvites().then(i =>{
+  var invites = [];
+   
+  i.forEach(inv =>{
+    var [invs,i]=[{},null];
+     
+    if(inv.maxUses){
+        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
+    }else{
+        invs[inv.code] =+ inv.uses;
+    }
+        invites.push(`inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
+   
+  });
+  var embed = new Discord.RichEmbed()
+  .setColor("#000000")
+  .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
+  .setThumbnail("https://cdn.discordapp.com/avatars/492573757492166685/4f4ac1fd43d0902c3f1b3ef3c1fce29c.jpg?size=128")
+           message.channel.send({ embed: embed });
+   
+  });
+   
+    }
+  });
   
  client.on('message', async message => {
   let args = message.content.split(" ");
@@ -304,9 +466,117 @@ client.on("ready", () => {
 })
 
 
+const fs = require("fs")
+const ar = JSON.parse(fs.readFileSync("./AutoRole.json", "UTF8"))
+client.on('guildMemberAdd', member => {
+  if(!ar[member.guild.id]) ar[member.guild.id] = {
+  onoff: 'Off',
+  role: 'Member'
+  }
+  if(ar[member.guild.id].onoff === 'Off') return;
+member.addRole(member.guild.roles.find(`name`, ar[member.guild.id].role)).catch(console.error)
+})
+ 
+client.on('message', message => {
+  var sender = message.author
+ 
+if(!message.guild) return
+  if(!ar[message.guild.id]) ar[message.guild.id] = {
+  onoff: 'Off',
+  role: 'Member'
+  }
+ 
+if(message.content.startsWith(`#autorole`)) {
+         
+  let perms = message.member.hasPermission(`MANAGE_ROLES`)
+ 
+  if(!perms) return message.reply(`You don't have permissions, required permission : Manage Roles.`)
+  let args = message.content.split(" ").slice(1)
+  if(!args.join(" ")) return message.reply(`${prefix}autorole toggle / set [ROLE NAME]`)
+  let state = args[0]
+  if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'setrole') return message.reply(`Please type a right state, ${prefix}modlogs toggle/setrole [ROLE NAME]`)
+    if(state.trim().toLowerCase() == 'toggle') {
+     if(ar[message.guild.id].onoff === 'Off') return [message.channel.send(`**The Autorole Is __𝐎𝐍__ !**`), ar[message.guild.id].onoff = 'On']
+     if(ar[message.guild.id].onoff === 'On') return [message.channel.send(`**The Autorole Is __𝐎𝐅𝐅__ !**`), ar[message.guild.id].onoff = 'Off']
+    }
+   if(state.trim().toLowerCase() == 'set') {
+   let newRole = message.content.split(" ").slice(2).join(" ")
+   if(!newRole) return message.reply(`${prefix}autorole set [ROLE NAME]`)
+     if(!message.guild.roles.find(`name`,newRole)) return message.reply(`I Cant Find This Role.`)
+    ar[message.guild.id].role = newRole
+     message.channel.send(`**The AutoRole Has Been Changed to ${newRole}.**`)
+   }
+         }
+if(message.content === '!!info') {
+    let perms = message.member.hasPermission(`MANAGE_GUILD`)
+    if(!perms) return message.reply(`You don't have permissions.`)
+    var embed = new Discord.RichEmbed()
+ 
+.addField(`Autorole : :sparkles:  `, `
+State : __${ar[message.guild.id].onoff}__
+Role : __${ar[message.guild.id].role}__`)
+ 
+ 
+    .setColor(`BLUE`)
+    message.channel.send({embed})
+  }
+ 
+ 
+    fs.writeFile("./AutoRole.json", JSON.stringify(ar), (err) => {
+    if (err) console.error(err)
+  });
+ 
+});
+
+client.on('message',function(message) {
+  if(!message.channel.guild) return;
 
 
-const fs = require('fs');
+var dat = JSON.parse("{}");
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.find("name", "BlueBot Codes.")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        })
+    })
+})
+});
+
+
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.find('name', 'welcome');
+    if (!channel) {
+        console.log("!channel fails");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('made it till here!');
+    var guild;
+    while (!guild)
+        guild = client.guilds.find("name", "BlueBot Codes.")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+                    console.log(3);
+                    console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
+ channel.send(` ♥ **تم دعوته من قبل ${Invite.inviter} ♥** `)            
+ }
+            dat[Inv] = Invite.uses;
+        })
+    })
+});
+
 const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
 
 client.on("message", message => {
@@ -342,9 +612,936 @@ client.on("message", message => {
     };
 });
 
+client.on("message", message => {    
+          if(!message.channel.guild) return;
+   if(message.author.bot) return;
+      if(message.content ===  prefix + "help"){ 
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("─══════ {✯**Choose**✯} ══════─",' ‎ ')
+  .addField(" **❧#help1 ➺      ⦁قائمة الاكواد ⦁  **",' ‎ ')
+   .addField("**❧#help2 ➺      ⦁ أوامر عامة ⦁** ",' ‎ ')
+     .addField("**❧#help3 ➺      ⦁ أوامر الأدارة + السبورت ⦁**",' ‎ ')
+	   .addField("─══════ {✯**BlueBot Codes.**✯} ══════─",' ‎ ')
+	 
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+   
+      }
+  });
+  
+
+
+
+ client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help1") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("⦁`All types of codes in D.JPEI Server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-js  ➺      ⦁ قائمة أكواد الجافا سكربت**  ⦁",' ‎ ')
+   .addField("❧  **#help-py  ➺      ⦁ قائمة أكواد ��لبايثون**  ⦁",' ‎ ')
+     .addField("❧  **#help-eris  ➺    ⦁ قائمة أكواد الإرس** ⦁",' ‎ ')
+	   .addField("❧  **#help-io  ➺      ⦁ قائمة أكواد الآي أو** ⦁",' ‎ ')
+	 
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+    }
+});
+  
+  
+  
+  
+   client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-js") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("⦁`All types of codes in BlueBot Codes. server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-js-source    ➺      ⦁ قسم السورس الأساسي** ⦁",' ‎ ')
+   .addField("❧  **#help-js-admin     ➺      ⦁ قسم الأكواد الإدارية** ⦁",' ‎ ')
+     .addField("❧  **#help-js-general   ➺      ⦁ قسم الأكواد العامة*** ⦁",' ‎ ')
+	   .addField("❧  **#help-js-welcome   ➺      ⦁ قسم أكواد الترحيب** ⦁",' ‎ ')
+	 	   .addField("❧  **#help-js-help      ➺      ⦁ قسم أكواد الهلب** ⦁",' ‎ ')
+		   	   .addField("❧  **#help-js-bc        ➺      ⦁ قسم أكواد البرودكاست** ⦁",' ‎ ')
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+  
+  
+     client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-js-source") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("**#help-js-source-1  ➺      ⦁ السورس الأساسي**⦁",' ‎ ')
+   .addField("**#help-js-source-2  ➺      ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت** ⦁",' ‎ ')
+     .addField("**#help-js-source-3  ➺      ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت** ⦁",' ‎ ')
+	   .addField("**#help-js-source-4  ➺      ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت** ⦁",' ‎ ')
+	 
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+  
+  
+  
+  client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-source-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود السورس الأساسي**
+https://hastebin.com/xumiferaru.coffeescript
+`);
+
+    }
+});  
+  
+  client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "bc4")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'all').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'all').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
+});
+  
+  
+    client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-source-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **السورس الأساسي مع الستريمنق ومعلومات البوت**
+https://hastebin.com/idotifusid.coffeescript
+`);
+
+    }
+});  
+  
+  
+  
+  
+  
+      client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-source-3") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **السورس الأساسي مع الواتشينق**
+https://hastebin.com/jivizupafi.coffeescript
+`);
+
+    }
+});  
+  
+  
+  
+        client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-source-4") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **السورس الاساسي مع البنق**
+https://hastebin.com/uxogubebif.coffeescript
+`);
+
+    }
+});  
+  
+  
+  
+  
+  
+       client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-js-admin") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+ .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+ .addField("**#help-js-admin-1  ➺      ⦁ كود الباند**⦁",' ‎ ')
+ .addField("**#help-js-admin-2  ➺      ⦁ كود الكيك** ⦁",' ‎ ')
+ .addField("**#help-js-admin-3  ➺      ⦁ كود مسح الشات مع عدد وشبيه بالبروبوت** ⦁",' ‎ ')
+ .addField("**#help-js-admin-4  ➺      ⦁ كود فتح وتقفيل الشات** ⦁",' ‎ ')
+ .addField("**#help-js-admin-5  ➺      ⦁  كود رابط يرسله خاص ل 100شخص لمدة 24 ساعه** ⦁",' ‎ ')
+ .addField("**#help-js-admin-6  ➺      ⦁  كود لانشاء شات كتابي** ⦁",' ‎ ')	  
+ .addField("**#help-js-admin-7  ➺      ⦁  كود لانشاء روم صوتي** ⦁",' ‎ ')
+ .addField("**#help-js-admin-8  ➺      ⦁  invite : كود دعوه البوت مثال ** ⦁",' ‎ ')	  
+	  
+	  
+	  
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+  
+  
+  
+          client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-admin-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود الباند**
+https://hastebin.com/hahujuwexa.php
+`);
+
+    }
+});  
+  
+  
+  
+  
+            client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-admin-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود الكيك**
+https://hastebin.com/bowivopose.php
+`);
+
+    }
+});  
+  
+  
+
+              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-admin-3") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود مسح الشات مع عدد وشبيه بالبروبوت**
+https://hastebin.com/iwororamam.coffeescript
+`);
+
+    }
+});  
+  
+  
+  
+  
+  
+                client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-admin-4") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود فتح وتقفيل الشات**
+https://hastebin.com/etugawomeh.coffeescript
+`);
+
+    }
+});  
+
+
+                  client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-admin-5") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ ** كود رابط يرسله خاص ل 100شخص لمدة 24 ساعه**
+ https://pastebin.com/Xe5kzVUw
+`);
+
+    }
+});
+  
+         client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-admin-6") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ ** كود لانشاء شات كتابي**
+ https://pastebin.com/ChtbaGu2
+`);
+
+    }
+});
+  
+           client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-admin-7") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ ** كود لانشاء روم صوتي**
+ https://pastebin.com/Y2SWEE6N
+`);
+
+    }
+});
+
+
+
+          client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-admin-8") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **invite : كود دعوه البوت مثال **
+https://pastebin.com/hP9VQpFR
+`);
+
+    }
+});  
+
+
+
+
+
+
+         client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-js-general") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+ .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+ .addField("**#help-js-general-1  ➺      ⦁ كود البنق **⦁",' ‎ ')
+ .addField("**#help-js-general-2  ➺      ⦁ كود القرعة ** ⦁",' ‎ ')
+ .addField("**#help-js-general-3  ➺      ⦁ كود الافتار  ** ⦁",' ‎ ')	  
+ .addField("**#help-js-general-4  ➺      ⦁ كود معلومات السيرفر ** ⦁",' ‎ ')
+ .addField("**#help-js-general-5  ➺      ⦁ كود المعلومات الشخصية** ⦁",' ‎ ')
+ .addField("**#help-js-general-6  ➺      ⦁ كود كت تويت** ⦁",' ‎ ')	  
+ .addField("**#help-js-general-7  ➺      ⦁ كود صراحه** ⦁",' ‎ ')	  
+	  
+	  
+ .setFooter('BlueBot Codes.')
+
+   message.channel.send({embed});
+
+
+    }
+});
+  
+  
+  
+  
+  
+  
+                  client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-general-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود البنق**
+ https://hastebin.com/udehosayej.coffeescript
+`);
+
+    }
+});
+  
+  
+  
+  
+                        client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-general-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود القرعة**
+ https://hastebin.com/qunobubuji.js
+`);
+
+    }
+});
+  
+  
+  
+  
+  
+                    client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-general-3") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود الافاتار**
+ https://hastebin.com/wopigecazo.js
+`);
+
+    }
+});
+  
+  
+  
+  
+  
+                      client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-general-4") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود معلومات السيرفر**
+ https://hastebin.com/xajaregari.js
+`);
+
+    }
+});
+
+
+
+
+
+
+                    client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-general-5") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود المعلومات الشخصية**
+ https://hastebin.com/vitodewesa.js
+`);
+
+    }
+});
+
+
+                client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-general-6") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود كت تويت**
+ https://pastebin.com/fak2SQsm
+`);
+
+    }
+});
+  
+  
+  
+  
+                    client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-general-7") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود صراحه **
+ https://pastebin.com/NC32yt0v
+`);
+
+    }
+});
+  
+
+const code = '#';
+
+client.on('message',async message => {
+    if(message.content.startsWith(code + "js")) {
+  if(!message.channel.guild) return message.reply(' ');
+    let rank = message.guild.member(message.author).roles.find('name', 'Support Team', ' Support PLUS ', ' Support Team Trail ');
+    if (!rank) return message.channel.send(':octagonal_sign: **| يجب ان تمتلك رتبة Support Team  لأستخدام هذا الأمر.**');
+    let jscodes = message.guild.channels.find(`name`, "codes-js");
+    if(!jscodes) return message.channel.send(":x:لم اجد الروم الخاص بنشر الاكواد");
+      let filter = m => m.author.id === message.author.id;
+      let thisMessage;
+      let thisFalse;
+      message.channel.send(':pencil: **| من فضلك اكتب الكود الأن... :pencil2: **').then(msg => {
+  
+      message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 90000,
+        errors: ['time']
+      })
+      .then(collected => {
+        collected.first().delete();
+        thisMessage = collected.first().content;
+        let boi;
+        msg.edit(':scroll: **| من فضلك اكتب وصف الكود الأن... :pencil2: **').then(msg => {
+  
+            message.channel.awaitMessages(filter, {
+              max: 1,
+              time: 90000,
+              errors: ['time']
+            })
+            .then(collected => {
+              collected.first().delete();
+              boi = collected.first().content;
+              let boi2;
+              msg.edit(':man_in_tuxedo: **| من فضلك اكتب من صنع هذا الكود الأن... :pencil2: **').then(msg => {
+  
+                message.channel.awaitMessages(filter, {
+                  max: 1,
+                  time: 90000,
+                  errors: ['time']
+                })
+                .then(collected => {
+                  collected.first().delete();
+                boi2 = collected.first().content;
+        msg.edit(':shield: **| [ هل انت متأكد من نشر الكود؟ | [ نعم ] او [ لا**');
+   message.channel.awaitMessages(response => response.content === 'نعم' || 'لا' && filter,{
+          max: 1,
+          time: 90000,
+          errors: ['time']
+        })
+        .then(collected => {
+          if(collected.first().content === 'لا') {
+            msg.delete();
+            message.delete();
+            thisFalse = false;
+          }
+          if(collected.first().content === 'نعم') {
+            if(thisFalse === false) return;
+            msg.edit(':dove: **| Done :white_check_mark:, تم بنجاح نشر كودك في روم الاكواد**');
+            collected.first().delete();
+            jscodes.send(`@everyone | @here
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+**BlueBot Codes© :arrow_down:**            
+\`\`\`js
+${thisMessage}\`\`\`
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+**وصف الكود**: ${boi}
+**تم النشر بواسطة**: ${message.author}
+**المصدر / الشخص الذي صنع الكود**: ${boi2}`); 
+          }
+        }
+    );
+});
+      });
+    }
+      );
+    });
+}
+);
+      })}});
+
+  
+           client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-js-welcome") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("**#help-js-welcome-1  ➺      ⦁ كود ترحيب مع ذكر رقم العضو **⦁",' ‎ ')
+   .addField("**#help-js-welcome-2  ➺      ⦁ كود الترحيب مع صورة ** ⦁",' ‎ ')
+     .addField("**#help-js-welcome-3  ➺      ⦁ كود مغادرة العضو ** ⦁",' ‎ ')
+
+	 
+		   
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+    }
+});
+  
+  
+  
+  
+                      client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-welcome-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود ترحيب مع ذكر رقم العضو**
+ https://hastebin.com/zapuyexive.js
+`);
+
+    }
+});
+  
+  
+  
+  
+                        client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-welcome-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود الترحيب مع صورة**
+ https://hastebin.com/tujehubuqo.php
+`);
+
+    }
+});
+
+
+
+
+                      client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-welcome-3") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود مغادرة العضو**
+ https://hastebin.com/gufimedaca.js
+`);
+
+    }
+});
+  
+  
+  
+  
+  
+  
+             client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-js-help") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("**#help-js-help-1  ➺      ⦁ كود هلب مع امبد يرسل بنفس الشات **⦁",' ‎ ')
+   .addField("**#help-js-help-2  ➺      ⦁ كود هلب مزخرف بدون امبد ويرسل عالخاص ** ⦁",' ‎ ')
+		   
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+    }
+});
+  
+  
+  
+  
+                        client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-help-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود هلب مع امبد يرسل بنفس الشات**
+https://hastebin.com/cikeyoguqa.cs
+`);
+
+    }
+});
+  
+  
+  
+                          client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-help-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود هلب مزخرف بدون امبد ويرسل عالخاص**
+https://hastebin.com/emawayudib.bash
+`);
+
+    }
+});
+  
+  
+  
+  
+  
+  
+  
+               client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-js-bc") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("**#help-js-bc-1  ➺      ⦁ برودكاست + للكل + مطور **⦁",' ‎ ')
+  .addField("**#help-js-bc-2  ➺      ⦁ برودكاست + للكل + غير مطور ** ⦁",' ‎ ')
+  .addField("**#help-js-bc-3  ➺      ⦁ برودكاست + للأونلاين + مع منشن + غير مطور **⦁",' ‎ ')
+  .addField("**#help-js-bc-4  ➺      ⦁ برودكاست + للكل + مع منشن + غير مطور ** ⦁",' ‎ ')	   
+		   
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+    }
+});
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-bc-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **برودكاست + للكل + مطور**
+ https://hastebin.com/bipanureqa.js
+`);
+
+    }
+});
+
+
+
+                            client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-bc-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **برودكاست + للكل + غير مطور**
+ https://hastebin.com/kuvoruzowe.cs
+`);
+
+    }
+});
+
+
+
+
+                            client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-bc-3") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ ** برودكاست + للأونلاين + مع منشن + غير مطور**
+ https://hastebin.com/zujuvupali.php
+`);
+
+    }
+});
+  
+  
+  
+  
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help-js-bc-4") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **برودكاست + للكل + مع منشن + غير مطور**
+ https://hastebin.com/zojokunayo.php
+`);
+
+    }
+});
 
 client.on('message', function(msg) {
-    if(msg.content.startsWith (prefix  + 'server2')) {
+    if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
@@ -441,10 +1638,287 @@ if (message.content.startsWith(prefix + "uptime")) {
 
 
 
-   
+   client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help2") {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("╔[❖════════════❖]╗",' ‎ ')
+ .addField("      اوامر عامه      ",' ‎ ')
+ .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
+  .addField("❖ #roll <number> ➾ قرعة ⦁",' ‎ ')
+   .addField("❖ #member ➾ معلومات الاعضاء ⦁",' ‎ ')
+     .addField("❖ #av ➾ صورة حسابك ⦁",' ‎ ')
+	   .addField("❖ #ser-av ➾ صورة السيرفر ⦁",' ‎ ')
+	 	   .addField("❖ #uptime ➾ مدة تشغيل البوت ⦁",' ‎ ')
+		   	   .addField("❖ #id ➾ اي دي ⦁",' ‎ ')
+		   	   .addField("❖ #inv ➾ رابط السيرفر ⦁",' ‎ ')
+.addField("❖ #own ➾ مسؤول البوت⦁",' ‎ ')
+.addField("❖ #top inv ➾ اكثر شخص بالدعوات ⦁",' ‎ ')
+.addField("❖ ❖ #ping ➾ عرض سرعه اتصال البوت ⦁",' ‎ ')
+.addField("❖ ❖ #server ➾ معلومات عن السيرفر ⦁",' ‎ ')
+
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});;
+
+
+  client.on('message', message => {
+if (message.content === prefix + 'help-eris') {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("╔[❖════════════❖]╗",' ‎ ')
+ .addField("      تحت الصيانه     ",' ‎ ')
+ .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
+
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+  client.on('message', message => {
+if (message.content === prefix + 'help-io') {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("╔[❖════════════❖]╗",' ‎ ')
+ .addField("      تحت الصيانه     ",' ‎ ')
+ .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
+
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+
+       client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-py") {
+          const embed = new Discord.RichEmbed()
+   .addField("❖ #help-py-source ➾  ⦁",' ‎ ')
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+ .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-py-source    ➺      ⦁ قسم السورس الأساسي** ⦁",' ‎ ')
+   .addField("❧  **#help-py-admin     ➺      ⦁ قسم الأكواد الإدارية** ⦁",' ‎ ')
+     .addField("❧  **سيتم اضافة المزيد ان شاء الله*** ⦁",' ‎ ')
+	  
+	  
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+  
+
+       client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "#help-py-source") {
+          const embed = new Discord.RichEmbed()
+   .addField("❖ #help-py-source ➾  ⦁",' ‎ ')
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+ .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-py-source-1    ➺      ⦁   السورس الأساسي + البيرفكس** ⦁",' ‎ ')
+   .addField("❧  **#help-py-source-2     ➺      ⦁ السورس الاساسي من غير بير فكس** ⦁",' ‎ ')
+
+	  
+	  
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-source-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **السور الاساسي مع البيرفكس**
+ https://pastebin.com/3EnXmuik
+`);
+
+    }
+});
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-source-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **السورس الاساسي من غير بيرفكس**
+ https://pastebin.com/tG8yr5fL
+`);
+
+    }
+});
+
+
+
+
+       client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "#help-py-admin") {
+          const embed = new Discord.RichEmbed()
+   .addField("❖ #help-py-source ➾  ⦁",' ‎ ')
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+ .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-py-admin-1    ➺      ⦁   كود اذا دخل البوت لسيرفر يعطيك معلومات عنه + امبد للبايثونوبس** ⦁",' ‎ ')
+   .addField("❧  **#help-py-admin-2     ➺      ⦁ كود يغيرلك النك نيم حقك فالسيرفر** ⦁",' ‎ ')
+   .addField("❧  **#help-py-admin-3     ➺      ⦁ كود يجيبلك الأيموجيز حقت السيرفر** ⦁",' ‎ ')
+	  
+	  
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
+
+
+
+
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-admin-1") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود اذا دخل البوت لسيرفر يعطيك معلومات عنه + امبد للبايثونوبس**
+ https://pastebin.com/mPzgeBt6
+`);
+
+    }
+});
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-admin-2") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود يغيرلك النك نيم حقك فالسيرفر**
+ https://pastebin.com/Sb67xRLc
+`);
+
+    }
+});
+                              client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "#help-py-admin-3") {
+		 message.channel.send('**لقد تم ارسال الكود في الخاص :ok_hand: **');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ 
+ ❖ **كود يجيبلك الأيموجيز حقت السيرفر**
+ https://pastebin.com/LarMXgLH
+`);
+
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+  client.on('message', message => {
+if (message.content === prefix + 'help3') {
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("╔[❖════════════❖]╗",' ‎ ')
+ .addField("      تحت الصيانه     ",' ‎ ')
+ .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
+
+ .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+
 		  
 		  client.on('message', message => {
-    if (message.content.startsWith("#avatar")) {
+    if (message.content.startsWith("#av")) {
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -459,14 +1933,48 @@ if (message.content.startsWith(prefix + "uptime")) {
       message.channel.sendEmbed(embed);
     }
 });
+	client.on('message', message => {
+       if (message.content.startsWith(prefix + "اقتراحي")) {
+        let args = message.content.split(" ").slice(1).join(' ');
+         if(!args) return message.channel.send(`**${prefix}اقتراحي <message>**`)
+        let embedcontact = new Discord.RichEmbed()
+        .addField('**Guild**', message.guild.name)
+        .addField('**مرسل من قبل**', message.author.tag)
+        .addField('اقتراحي هو', args)
+        .setColor('RANDOM')
+        .setThumbnail("https://cdn2.iconfinder.com/data/icons/basic-flat-icon-set/128/letter-256.png")
+        .setFooter(message.author.username, message.author.avatarURL)
+       .setTimestamp()
+        client.channels.get("502855171336830976") 
+        .send(embedcontact);
 
+         message.channel.send('``تم ارسال الاقتراح وشكرا لك``').then((message)=> {
+          message.delete(50000)
+      })
+       }
+       });
+	
+client.on('message', function(message) {
+    if(message.content.startsWith(prefix + 'roll')) {
+        let args = message.content.split(" ").slice(1);
+        if (!args[0]) {
+            message.channel.send('حط رقم معين يتم السحب منه');
+            return;
+            }
+    message.channel.send(Math.floor(Math.random() * args.join(' ')));
+            if (!args[0]) {
+          message.edit('1')
+          return;
+        }
+    }
+});
 
 
 client.on("message", message => {
               
           if(!message.channel.guild) return;
    if(message.author.bot) return;
-      if(message.content === prefix + "serverpic"){ 
+      if(message.content === prefix + "ser-av"){ 
           const embed = new Discord.RichEmbed()
   
       .setTitle(`This is  ** ${message.guild.name} **  Photo !`)
@@ -499,57 +2007,133 @@ client.on('message', message => {
                     });
 
 
+client.on("message", message => {    
+          if(!message.channel.guild) return;
+   if(message.author.bot) return;
+      if(message.content === "#inv"){ 
+          const embed = new Discord.RichEmbed()
+  
 
-    client.on('message' , najzx => {
-          var prefix = "#";
-          if(najzx.author.bot) return;
-         
-          if(najzx.content.startsWith(prefix + "bcrole")) {
-            if (!najzx.member.hasPermission("ADMINISTRATOR"))  return;
-            let args = najzx.content.split(" ").slice(1);
-         
-            if(!args[0]) {
-              najzx.channel.send("قم بمنشنة الرتبة | #bcrole @role الرساله")
-                return;
-            }
-            if(!args[1]) {
-              najzx.channel.send("قم بكتابة الرسالة | #bcrole @role الرساله")
-                return;
-            }
-         
-              if(args[0] == "@everyone") {
-                najzx.channel.send(`لقد تم ارسال هذه الرسالة الى ${najzx.guild.memberCount} اعضاء`)
-                najzx.guild.members.forEach(m => {
-                  m.send(
-                  "**" + "السيرفر :" + "\n" +
-                  `${najzx.guild.name}` + "\n" +
-                  "المرسل :" + "\n" +
-                  `${najzx.author.tag}` + "\n" +
-                  "الرسالة :" + "\n" +
-                  `${args[1]}` + "**"
-                  )
-                })
-                return;
-              }
-         
-                  var role = najzx.mentions.roles.first();
-                    if(!role) {
-                      najzx.reply("لا توجد رتبة بهذا الاسم")
-                        return;
-                    }
-                najzx.guild.members.filter(m => m.roles.get(role.id)).forEach(n => {
-                  n.send(
-                  "**" + "السيرفر :" + "\n" +
-                  `${najzx.guild.name}` + "\n" +
-                  "المرسل :" + "\n" +
-                  `${najzx.author.tag}` + "\n" +
-                  "الرسالة :" + "\n" +
-                  `${args[1]}` + "**"
-                  )
-                })
-                najzx.channel.send(`لقد تم ارسال هذه الرسالة الى ${najzx.guild.members.filter(m => m.roles.get(role.id)).size} عضو`)
-            }
+   .setColor('RANDOM')
+  .setTimestamp()
+  .addField("سيرفر للمساعده والبرمجه",'https://discord.gg/ds5gPB5')
+
+       .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+      }
+  });
+  
+client.on("message", message => {    
+          if(!message.channel.guild) return;
+   if(message.author.bot) return;
+      if(message.content === "#own"){ 
+          const embed = new Discord.RichEmbed()
+  
+
+   .setColor('RANDOM')
+  .setTimestamp()
+      .addField(':crown:**__ الأونـر__**',`**${msg.guild.owner}**`,true)
+
+
+       .setFooter('BlueBot Codes.')
+
+
+   message.channel.send({embed});
+      }
+  });
+
+const moment = require('moment');
+client.on('message',async message => {
+  var time = moment().format('Do MMMM YYYY , hh:mm');
+  var room;
+  var title;
+  var duration;
+  var gMembers;
+  var currentTime = new Date(),
+hours = currentTime.getHours() + 3 ,
+minutes = currentTime.getMinutes(),
+done = currentTime.getMinutes() + duration / 60000 ,
+seconds = currentTime.getSeconds();
+if (minutes < 10) {
+minutes = "0" + minutes;
+}
+var suffix = "AM";
+if (hours >= 12) {
+suffix = "PM";
+hours = hours - 12;
+}
+if (hours == 0) {
+hours = 12;
+}
+
+  var filter = m => m.author.id === message.author.id;
+  if(message.content.startsWith(prefix + "ggiveaway")) {
+
+    if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
+    message.channel.send(`:eight_pointed_black_star:| **Send Name channel For the Giveaway**`).then(msg => {
+      message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 20000,
+        errors: ['time']
+      }).then(collected => {
+        let room = message.guild.channels.find('name' , collected.first().content);
+        if(!room) return message.channel.send(':heavy_multiplication_x:| **i Found It :(**');
+        room = collected.first().content;
+        collected.first().delete();
+        msg.edit(':eight_pointed_black_star:| **Time For The Giveaway**').then(msg => {
+          message.channel.awaitMessages(filter, {
+            max: 1,
+            time: 20000,
+            errors: ['time']
+          }).then(collected => {
+            if(isNaN(collected.first().content)) return message.channel.send(':heavy_multiplication_x:| **The Time Be Nambers `` Do the Commend Agin``**');
+            duration = collected.first().content * 60000;
+            collected.first().delete();
+            msg.edit(':eight_pointed_black_star:| **Now send The Present **').then(msg => {
+              message.channel.awaitMessages(filter, {
+                max: 1,
+                time: 20000,
+                errors: ['time']
+              }).then(collected => {
+                title = collected.first().content;
+                collected.first().delete();
+                msg.delete();
+                message.delete();
+                try {
+                  let giveEmbed = new Discord.RichEmbed()
+                  .setDescription(`**${title}** \nReact With 🎉 To Enter! \nTime remaining : ${duration / 60000} **Minutes**\n **Created at :** ${hours}:${minutes}:${seconds} ${suffix}`)
+                  .setFooter(message.author.username, message.author.avatarURL);
+                  message.guild.channels.find("name" , room).send(' :heavy_check_mark: **Giveaway Created** :heavy_check_mark:' , {embed: giveEmbed}).then(m => {
+                     let re = m.react('🎉');
+                     setTimeout(() => {
+                       let users = m.reactions.get("🎉").users;
+                       let list = users.array().filter(u => u.id !== m.author.id !== client.user.id);
+                       let gFilter = list[Math.floor(Math.random() * list.length) + 0]
+                       let endEmbed = new Discord.RichEmbed()
+                       .setAuthor(message.author.username, message.author.avatarURL)
+                       .setTitle(title)
+                       .addField('Giveaway Ended !🎉',`Winners : ${gFilter} \nEnded at :`)
+                       .setTimestamp()
+					 m.edit('** 🎉 GIVEAWAY ENDED 🎉**' , {embed: endEmbed});
+					message.guild.channels.find("name" , room).send(`**Congratulations ${gFilter}! You won The \`${title}\`**` , {embed: {}})
+                     },duration);
+                   });
+                } catch(e) {
+                message.channel.send(`:heavy_multiplication_x:| **i Don't Have Prem**`);
+                  console.log(e);
+                }
+              });
+            });
+          });
         });
+      });
+    });
+  }
+});
+
+
 
 
 
