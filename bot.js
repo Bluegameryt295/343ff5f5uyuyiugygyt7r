@@ -2141,7 +2141,7 @@ client.on('message', message => {
   }
  
  
-  if (message.content.startsWith('#bc')) {
+  if (message.content.startsWith('#!bc')) {
           if (!args[0]) {
 message.channel.send("**#bc <message>**");
 return;
