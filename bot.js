@@ -28,13 +28,6 @@ client.user.setGame(`BlueBot Codes.`,"https://www.twitch.tv/S-F")
   console.log('')
 });
 
-client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('Pong!');
-  }
-});
-
-
 const devs = ['349095859859881984'];
 const adminprefix = "#";
 client.on('message', message => {
@@ -62,7 +55,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 
 client.on('message', message => {
-   if (message.content === "#serverinf") {
+   if (message.content === "#server") {
        if (!message.channel.guild) return
        var verificationLevel = message.guild.verificationLevel;
        const verificationLevels = ['None','Low','Meduim','High','Extreme'];
@@ -117,90 +110,7 @@ client.on('message', message => {
 });
    
    
-  client.on('message', message => {
-    if (message.content.startsWith("link")) {
-        
-  message.channel.createInvite({
-        thing: true,
-        maxUses: 5,
-        maxAge: 86400
-    }).then(invite =>  
-      message.author.sendMessage(invite.url)
-    )
-    const embed = new Discord.RichEmbed()
-        .setColor("000000").setColor('#36393e')
-        .setDescription("| :white_check_mark: | 👍  تم ارسال الرابط على الخاص  ")
-        .setFooter("BlueBot Codes.")
-      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-              const Embed11 = new Discord.RichEmbed()
-        .setColor("000000").setColor('#36393e')
-        .setDescription(`
-**-------------------
--هذا هو الرابط 
--ارسله للي تحب وحيآك انت وياه
--ونورنا ياجميل :v: 
-------------------- **`)
-        .setFooter("By:iiBlueGamer295YT| SK .❤#6144")
-      message.author.sendEmbed(Embed11)
-    }
-});
-   
-   
-    client.on('message', message => {
-    if (message.content.startsWith("Link")) {
-        
-  message.channel.createInvite({
-        thing: true,
-        maxUses: 5,
-        maxAge: 86400
-    }).then(invite =>  
-      message.author.sendMessage(invite.url)
-    )
-    const embed = new Discord.RichEmbed()
-        .setColor("000000").setColor('#36393e')
-        .setDescription("| :white_check_mark: | 👍  تم ارسال الرابط على الخاص  ")
-        .setFooter("BlueBot Codes.")
-      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-              const Embed11 = new Discord.RichEmbed()
-        .setColor("000000").setColor('#36393e')
-        .setDescription(`
-**-------------------
--هذا هو الرابط 
--ارسله للي تحب وحيآك انت وياه
--ونورنا ياجميل :v: 
-------------------- **`)
-        .setFooter("By:iiBlueGamer295YT| SK .❤#6144")
-      message.author.sendEmbed(Embed11)
-    }
-});
-   
- client.on('message', message => {
-    if (message.content.startsWith("LINK")) {
-        
-  message.channel.createInvite({
-        thing: true,
-        maxUses: 5,
-        maxAge: 86400
-    }).then(invite =>  
-      message.author.sendMessage(invite.url)
-    )
-    const embed = new Discord.RichEmbed()
-        .setColor("000000").setColor('#36393e')
-        .setDescription("| :white_check_mark: | 👍  تم ارسال الرابط على الخاص  ")
-        .setFooter("BlueBot Codes.")
-      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-              const Embed11 = new Discord.RichEmbed()
-        .setColor("000000").setColor('#36393e')
-        .setDescription(`
-**-------------------
--هذا هو الرابط 
--ارسله للي تحب وحيآك انت وياه
--ونورنا ياجميل :v: 
-------------------- **`)
-        .setFooter("By:iiBlueGamer295YT| SK .❤#6144")
-      message.author.sendEmbed(Embed11)
-    }
-});
+ 
    
 client.on('message',async message => {
   let args = message.content.split(" ").slice(1).join(" ");
@@ -1428,26 +1338,7 @@ https://hastebin.com/emawayudib.bash
     }
 });
 
-client.on('message', function(msg) {
-    if(msg.content.startsWith (prefix  + 'server')) {
-      let embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
-      .addField(':globe_with_meridians:** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
-      .addField(':medal:** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
-      .addField(':red_circle:**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
-      .addField(':large_blue_circle:**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
-      .addField(':pencil:**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-      .addField(':microphone:**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-      .addField(':crown:**__ الأونـر__**',`**${msg.guild.owner}**`,true)
-      .addField(':id:**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
 
-      .addField(':date:**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
-
-      msg.channel.send({embed:embed});
-    }
-  });
 	
 	
 	
@@ -1956,70 +1847,7 @@ if (hours == 0) {
 hours = 12;
 }
 
-  var filter = m => m.author.id === message.author.id;
-  if(message.content.startsWith(prefix + "ggiveaway")) {
-
-    if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
-    message.channel.send(`:eight_pointed_black_star:| **Send Name channel For the Giveaway**`).then(msg => {
-      message.channel.awaitMessages(filter, {
-        max: 1,
-        time: 20000,
-        errors: ['time']
-      }).then(collected => {
-        let room = message.guild.channels.find('name' , collected.first().content);
-        if(!room) return message.channel.send(':heavy_multiplication_x:| **i Found It :(**');
-        room = collected.first().content;
-        collected.first().delete();
-        msg.edit(':eight_pointed_black_star:| **Time For The Giveaway**').then(msg => {
-          message.channel.awaitMessages(filter, {
-            max: 1,
-            time: 20000,
-            errors: ['time']
-          }).then(collected => {
-            if(isNaN(collected.first().content)) return message.channel.send(':heavy_multiplication_x:| **The Time Be Nambers `` Do the Commend Agin``**');
-            duration = collected.first().content * 60000;
-            collected.first().delete();
-            msg.edit(':eight_pointed_black_star:| **Now send The Present **').then(msg => {
-              message.channel.awaitMessages(filter, {
-                max: 1,
-                time: 20000,
-                errors: ['time']
-              }).then(collected => {
-                title = collected.first().content;
-                collected.first().delete();
-                msg.delete();
-                message.delete();
-                try {
-                  let giveEmbed = new Discord.RichEmbed()
-                  .setDescription(`**${title}** \nReact With 🎉 To Enter! \nTime remaining : ${duration / 60000} **Minutes**\n **Created at :** ${hours}:${minutes}:${seconds} ${suffix}`)
-                  .setFooter(message.author.username, message.author.avatarURL);
-                  message.guild.channels.find("name" , room).send(' :heavy_check_mark: **Giveaway Created** :heavy_check_mark:' , {embed: giveEmbed}).then(m => {
-                     let re = m.react('🎉');
-                     setTimeout(() => {
-                       let users = m.reactions.get("🎉").users;
-                       let list = users.array().filter(u => u.id !== m.author.id !== client.user.id);
-                       let gFilter = list[Math.floor(Math.random() * list.length) + 0]
-                       let endEmbed = new Discord.RichEmbed()
-                       .setAuthor(message.author.username, message.author.avatarURL)
-                       .setTitle(title)
-                       .addField('Giveaway Ended !🎉',`Winners : ${gFilter} \nEnded at :`)
-                       .setTimestamp()
-					 m.edit('** 🎉 GIVEAWAY ENDED 🎉**' , {embed: endEmbed});
-					message.guild.channels.find("name" , room).send(`**Congratulations ${gFilter}! You won The \`${title}\`**` , {embed: {}})
-                     },duration);
-                   });
-                } catch(e) {
-                message.channel.send(`:heavy_multiplication_x:| **i Don't Have Prem**`);
-                  console.log(e);
-                }
-              });
-            });
-          });
-        });
-      });
-    });
-  }
-});
+ 
 
 
 client.on('message', async message => {
