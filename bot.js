@@ -34,13 +34,6 @@ client.on('message', msg => {
   }
 });
 
-client.on("ready", () => {
-  function lol() {
-    client.guilds.get('501039594070867968').roles.find("name", "RainBow").setColor("RANDOM");
-  };
-  setInterval(lol, 1600);
-});
-
 
 const devs = ['349095859859881984'];
 const adminprefix = "#";
