@@ -1707,20 +1707,6 @@ if (message.content === prefix + 'help3') {
        }
        });
 	
-client.on('message', function(message) {
-    if(message.content.startsWith(prefix + 'roll')) {
-        let args = message.content.split(" ").slice(1);
-        if (!args[0]) {
-            message.channel.send('حط رقم معين يتم السحب منه');
-            return;
-            }
-    message.channel.send(Math.floor(Math.random() * args.join(' ')));
-            if (!args[0]) {
-          message.edit('1')
-          return;
-        }
-    }
-});
 
 
 client.on("message", message => {
@@ -1743,59 +1729,7 @@ client.on("message", message => {
 
 
 
-client.on('message', message => {
-                                if(!message.channel.guild) return;
-                        if (message.content.startsWith('#ping')) {
-                            if(!message.channel.guild) return;
-                            var msg = `${Date.now() - message.createdTimestamp}`
-                            var api = `${Math.round(client.ping)}`
-                            if (message.author.bot) return;
-                        let embed = new Discord.RichEmbed()
-                        .setAuthor(message.author.username,message.author.avatarURL)
-                        .setColor('RANDOM')
-                        .addField('**Time Taken:**',msg + " ms 📶 ")
-                        .addField('**WebSocket:**',api + " ms 📶 ")
-         message.channel.send({embed:embed});
-                        }
-                    });
-
-
-client.on("message", message => {    
-          if(!message.channel.guild) return;
-   if(message.author.bot) return;
-      if(message.content === "#inv"){ 
-          const embed = new Discord.RichEmbed()
   
-
-   .setColor('RANDOM')
-  .setTimestamp()
-  .addField("سيرفر للمساعده والبرمجه",'https://discord.gg/ds5gPB5')
-
-       .setFooter('BlueBot Codes.')
-
-
-   message.channel.send({embed});
-      }
-  });
-  
-client.on("message", message => {    
-          if(!message.channel.guild) return;
-   if(message.author.bot) return;
-      if(message.content === "#own"){ 
-          const embed = new Discord.RichEmbed()
-  
-
-   .setColor('RANDOM')
-  .setTimestamp()
-      .addField(':crown:**__ الأونـر__**',`**${msg.guild.owner}**`,true)
-
-
-       .setFooter('BlueBot Codes.')
-
-
-   message.channel.send({embed});
-      }
-  });
 
 const moment = require('moment');
 client.on('message',async message => {
