@@ -359,25 +359,8 @@ if (!perm) return message.reply(':x: | **You don\'t have `BAN_MEMBERS` permissio
     })
   }).catch(() => message.channel.send("Theres no user with the this ID :face_palm:"))
 }
-  })
+  });
   
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.find("name", "BlueBot Codes.")
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        })
-    })
-})
-
-
 
 
 
@@ -1913,7 +1896,21 @@ client.on("message", message => {
 });
 
 
-
+var dat = JSON.parse("/bluebot-codes.json");
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.find("name", "Blue Codes.™")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        })
+    })
+})
 
 
 client.login(process.env.BOT_TOKEN);
