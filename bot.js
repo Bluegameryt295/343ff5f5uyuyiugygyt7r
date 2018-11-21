@@ -327,37 +327,6 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 });
 
 
-client.on('message', message => {
-
-if(message.content.startsWith(prefix + 'hackban')) {
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("** :x: | You Don't Have ` BAN_MEMBERS ` Permission**");
-  let nourid = message.content.split(" ").slice(3).join(" ");
-  client.fetchUser(nourid).then(id => {
-    message.guild.ban(id).catch(err => {
-      message.channel.send("Error 404, failed to ban this user :( -> " +id)
-      console.log(err)
-    })
-    message.channel.send(`I banned the user ${id} successfully.`)
-  }).catch(() => {
-    message.channel.send(`Theres no user with the ID of ${nourid}, please try again. :face_palm:`)
-  })
-  }});
-client.on('message', message => {
-if(message.content.startsWith(prefix + 'unhackban')) {
-if (!perm) return message.reply(':x: | **You don\'t have `BAN_MEMBERS` permission to use this command**.')	
-  let nourid = message.content.split(" ").slice(3).join(" ");
-  let nour = bot.fetchUser(nourid)
-  .then(user => {
-    message.guild.unban(user.id)
-    .then(() => {
-      message.channel.send(`Alright, I unhackbanned ${user}.`)
-    }).catch(err => {
-        message.channel.send(`Failed to unban :( ${user}`)
-    })
-  }).catch(() => message.channel.send("Theres no user with the this ID :face_palm:"))
-}
-  })
-  
 
 
 
