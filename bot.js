@@ -60,31 +60,6 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 });
 
 
-client.on('message', message => {
-   if (message.content === "#serverinf") {
-       if (!message.channel.guild) return
-       var verificationLevel = message.guild.verificationLevel;
-       const verificationLevels = ['None','Low','Meduim','High','Extreme'];
-       var Y1 = message.guild.createdAt.getFullYear() - 2000
-       var M2 = message.guild.createdAt.getMonth()
-       var D3 = message.guild.createdAt.getDate()
-       const xNiTRoZ = new Discord.RichEmbed()
-        .setAuthor(message.author.username , message.author.avatarURL)
-        .setColor('RANDOM')
-        .setTimestamp()
-        .setTitle(message.guild.name,message.guild.iconURL)
-        .addField(':id: Server ID',`${message.guild.id}`,true)
-        .addField(':date: Created on',D3 + '.' + M2 + '.' + Y1,true)             
-        .addField(':crown: Server Owner',`${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)             
-        .addField(':busts_in_silhouette: Members ' + ` [${message.guild.memberCount}] `,'Online '+`[ ${message.guild.members.filter(m=>m.presence.status == 'online','idle','dnd').size} ]`+ ','+'Offline '+`[ ${message.guild.members.filter(m=>m.presence.status == 'offline').size} ]`,true)
-        .addField(':speech_balloon: Channels' +' '+message.guild.channels.size+' ',`Text [ ${message.guild.channels.filter(m => m.type === 'text').size} ]`+', '+`Voice [ ${message.guild.channels.filter(m => m.type === 'voice').size} ]`,true)
-        .addField(':earth_asia: Region',message.guild.region)
-        .addField(':ribbon: Server Emojis',`${message.guild.emojis.size}`,true)
-        .addField(':construction: Verification Level',`${verificationLevels[message.guild.verificationLevel]}`,true)
-        .addField('By : iiBlueGamer295YT| SK .❤#6144')
-        message.channel.send({embed:xNiTRoZ});
-    }
-   });
 
 
  client.on('message', message => {
@@ -201,75 +176,7 @@ client.on('message', message => {
     }
 });
    
-client.on('message',async message => {
-  let args = message.content.split(" ").slice(1).join(" ");
-  let role = message.guild.roles.find('name',args) || message.guild.roles.get(args);
 
-
-  if(message.content.startsWith(prefix + "Role")) {
-    if(!args) return message.reply('اكتب اسم الرتبة');
-    if(!role) return message.reply('هذه الرتبة غير موجودة');
-    let iQp = new Discord.RichEmbed()
-    .setAuthor(message.author.tag,message.author.avatarURL)
-    .setTitle(message.guild.name)
-    .setThumbnail(message.guild.iconURL)
-    .addField('- اسم الرتبة',role.name,true)
-    .addField('- اي دي الرتبة',role.id,true)
-    .addField('- تم انشاء الرتبة',role.createdAt.toLocaleString(),true)
-    .addField('- لون الرتبة',role.hexColor,true)
-    .addField('- عدد الاعضاء الذي لديهم نفس الرتبة',role.members.size,true)
-    .addField('- مركز الرتبة بين كل الرتب',role.position,true)
-    .addField('- خصائص الرتبة',role.permissions,true)
-    .setFooter(message.author.tag,message.author.avatarURL);
-
-    message.channel.send(iQp);
-  }
-});
-
-
-
-
-         client.on('message', message => {
-            if (message.content.startsWith(prefix + "bot")) {
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField(' السيرفرات🌐',`[${client.guilds.size}]  `)
-.addField(' الاعضاء👥 ',` [${client.users.size}] `)
-.addField('الرومات📚 ',`[${client.channels.size}]`) 
-.addField(' البنق🚀 ',`[${Date.now() - message.createdTimestamp}]`) 
-.addField('مصمم  + صاحب البوت ',`By:iiBlueGamer295YT| SK .❤#9431`)
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-    }
-});
-
-client.on('message',message =>{
-    var prefix = "#";
-    if(message.content.startsWith(prefix + 'invites')) {
-  message.guild.fetchInvites().then(i =>{
-  var invites = [];
-   
-  i.forEach(inv =>{
-    var [invs,i]=[{},null];
-     
-    if(inv.maxUses){
-        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
-    }else{
-        invs[inv.code] =+ inv.uses;
-    }
-        invites.push(`inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
-   
-  });
-  var embed = new Discord.RichEmbed()
-  .setColor("#000000")
-  .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
-  .setThumbnail("https://cdn.discordapp.com/avatars/492573757492166685/4f4ac1fd43d0902c3f1b3ef3c1fce29c.jpg?size=128")
-           message.channel.send({ embed: embed });
-   
-  });
-   
-    }
-  });
   
  client.on('message', async message => {
   let args = message.content.split(" ");
@@ -361,6 +268,8 @@ client.on('message',message =>{
     },duration * 60000); //kinggamer حقوق الفا كودز و
   }
 });
+
+
 client.on('message', async message => {
     let mention = message.mentions.members.first();
 let command = message.content.split(" ")[0];
@@ -449,105 +358,7 @@ if (!perm) return message.reply(':x: | **You don\'t have `BAN_MEMBERS` permissio
 }
   })
   
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.find("name", "BlueBot Codes.")
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        })
-    })
-})
 
-
-const fs = require("fs")
-const ar = JSON.parse(fs.readFileSync("./AutoRole.json", "UTF8"))
-client.on('guildMemberAdd', member => {
-  if(!ar[member.guild.id]) ar[member.guild.id] = {
-  onoff: 'Off',
-  role: 'Member'
-  }
-  if(ar[member.guild.id].onoff === 'Off') return;
-member.addRole(member.guild.roles.find(`name`, ar[member.guild.id].role)).catch(console.error)
-})
- 
-client.on('message', message => {
-  var sender = message.author
- 
-if(!message.guild) return
-  if(!ar[message.guild.id]) ar[message.guild.id] = {
-  onoff: 'Off',
-  role: 'Member'
-  }
- 
-if(message.content.startsWith(`#autorole`)) {
-         
-  let perms = message.member.hasPermission(`MANAGE_ROLES`)
- 
-  if(!perms) return message.reply(`You don't have permissions, required permission : Manage Roles.`)
-  let args = message.content.split(" ").slice(1)
-  if(!args.join(" ")) return message.reply(`${prefix}autorole toggle / set [ROLE NAME]`)
-  let state = args[0]
-  if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'setrole') return message.reply(`Please type a right state, ${prefix}modlogs toggle/setrole [ROLE NAME]`)
-    if(state.trim().toLowerCase() == 'toggle') {
-     if(ar[message.guild.id].onoff === 'Off') return [message.channel.send(`**The Autorole Is __𝐎𝐍__ !**`), ar[message.guild.id].onoff = 'On']
-     if(ar[message.guild.id].onoff === 'On') return [message.channel.send(`**The Autorole Is __𝐎𝐅𝐅__ !**`), ar[message.guild.id].onoff = 'Off']
-    }
-   if(state.trim().toLowerCase() == 'set') {
-   let newRole = message.content.split(" ").slice(2).join(" ")
-   if(!newRole) return message.reply(`${prefix}autorole set [ROLE NAME]`)
-     if(!message.guild.roles.find(`name`,newRole)) return message.reply(`I Cant Find This Role.`)
-    ar[message.guild.id].role = newRole
-     message.channel.send(`**The AutoRole Has Been Changed to ${newRole}.**`)
-   }
-         }
-if(message.content === '!!info') {
-    let perms = message.member.hasPermission(`MANAGE_GUILD`)
-    if(!perms) return message.reply(`You don't have permissions.`)
-    var embed = new Discord.RichEmbed()
- 
-.addField(`Autorole : :sparkles:  `, `
-State : __${ar[message.guild.id].onoff}__
-Role : __${ar[message.guild.id].role}__`)
- 
- 
-    .setColor(`BLUE`)
-    message.channel.send({embed})
-  }
- 
- 
-    fs.writeFile("./AutoRole.json", JSON.stringify(ar), (err) => {
-    if (err) console.error(err)
-  });
- 
-});
-
-client.on('message',function(message) {
-  if(!message.channel.guild) return;
-
-
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.find("name", "BlueBot Codes.")
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        })
-    })
-})
-});
 
 
 client.on("guildMemberAdd", (member) => {
@@ -562,7 +373,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "BlueBot Codes.")
+        guild = client.guilds.find("name", "Blue Codes.™")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -577,40 +388,7 @@ client.on("guildMemberAdd", (member) => {
     })
 });
 
-const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
 
-client.on("message", message => {
-    fs.writeFile('./suck.json', JSON.stringify(suck));
-});
-client.on('ready', () => {
-    setInterval(function(){
-        client.guilds.forEach(g => {
-            if (suck[g.id]) {
-                if (suck[g.id].role) {
-                    var role = g.roles.get(suck[g.id].role);
-                    if (role) {
-                        role.edit({color : "RANDOM"});
-                    };
-                };
-            };
-        });
-    }, 1500);
-});
-client.on("message", message => {
-    if (!message.content.startsWith(prefix)) return;
-    if (message.author.bot) return;
-    if (message.channel.type !== "text") return message.reply("This Command Is Only Allowed In Servers");
-    var args = message.content.split(" ");
-    var command = args[0].slice(prefix.length);
-    switch(command) {
-        case "rainbow" :
-        if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("no no");
-        message.guild.createRole({name : "rainbow", color : "RANDOM"}).then(r => {
-            r.edit({color : "RANDOm"});
-            suck[message.guild.id] = {role : r.id};
-        });
-    };
-});
 
 client.on("message", message => {    
           if(!message.channel.guild) return;
@@ -626,9 +404,9 @@ client.on("message", message => {
   .addField(" **❧#help1 ➺      ⦁قائمة الاكواد ⦁  **",' ‎ ')
    .addField("**❧#help2 ➺      ⦁ أوامر عامة ⦁** ",' ‎ ')
      .addField("**❧#help3 ➺      ⦁ أوامر الأدارة + السبورت ⦁**",' ‎ ')
-	   .addField("─══════ {✯**BlueBot Codes.**✯} ══════─",' ‎ ')
+	   .addField("─══════ {✯**Blue Codes.™**✯} ══════─",' ‎ ')
 	 
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -648,13 +426,13 @@ client.on("message", message => {
    .setColor('RANDOM')
   .setTimestamp()
 
-  .addField("⦁`All types of codes in D.JPEI Server 💬`⦁",' ‎ ')
+  .addField("⦁`All types of codes in Blue Codes.™ Server 💬`⦁",' ‎ ')
   .addField("❧  **#help-js  ➺      ⦁ قائمة أكواد الجافا سكربت**  ⦁",' ‎ ')
    .addField("❧  **#help-py  ➺      ⦁ قائمة أكواد ��لبايثون**  ⦁",' ‎ ')
      .addField("❧  **#help-eris  ➺    ⦁ قائمة أكواد الإرس** ⦁",' ‎ ')
 	   .addField("❧  **#help-io  ➺      ⦁ قائمة أكواد الآي أو** ⦁",' ‎ ')
 	 
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -674,14 +452,14 @@ client.on("message", message => {
    .setColor('RANDOM')
   .setTimestamp()
 
-  .addField("⦁`All types of codes in BlueBot Codes. server 💬`⦁",' ‎ ')
+  .addField("⦁`All types of codes in Blue Codes.™ server 💬`⦁",' ‎ ')
   .addField("❧  **#help-js-source    ➺      ⦁ قسم السورس الأساسي** ⦁",' ‎ ')
    .addField("❧  **#help-js-admin     ➺      ⦁ قسم الأكواد الإدارية** ⦁",' ‎ ')
      .addField("❧  **#help-js-general   ➺      ⦁ قسم الأكواد العامة*** ⦁",' ‎ ')
 	   .addField("❧  **#help-js-welcome   ➺      ⦁ قسم أكواد الترحيب** ⦁",' ‎ ')
 	 	   .addField("❧  **#help-js-help      ➺      ⦁ قسم أكواد الهلب** ⦁",' ‎ ')
 		   	   .addField("❧  **#help-js-bc        ➺      ⦁ قسم أكواد البرودكاست** ⦁",' ‎ ')
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -700,13 +478,13 @@ client.on("message", message => {
    .setColor('RANDOM')
   .setTimestamp()
 
-  .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("⦁`All types of codes in Blue Codes.™. Server 💬`⦁",' ‎ ')
   .addField("**#help-js-source-1  ➺      ⦁ السورس الأساسي**⦁",' ‎ ')
    .addField("**#help-js-source-2  ➺      ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت** ⦁",' ‎ ')
      .addField("**#help-js-source-3  ➺      ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت** ⦁",' ‎ ')
 	   .addField("**#help-js-source-4  ➺      ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت** ⦁",' ‎ ')
 	 
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -823,7 +601,7 @@ https://hastebin.com/uxogubebif.coffeescript
    .setColor('RANDOM')
   .setTimestamp()
 
- .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+ .addField("⦁`All types of codes in Blue Codes.™ Server 💬`⦁",' ‎ ')
  .addField("**#help-js-admin-1  ➺      ⦁ كود الباند**⦁",' ‎ ')
  .addField("**#help-js-admin-2  ➺      ⦁ كود الكيك** ⦁",' ‎ ')
  .addField("**#help-js-admin-3  ➺      ⦁ كود مسح الشات مع عدد وشبيه بالبروبوت** ⦁",' ‎ ')
@@ -835,7 +613,7 @@ https://hastebin.com/uxogubebif.coffeescript
 	  
 	  
 	  
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -1016,7 +794,7 @@ https://pastebin.com/hP9VQpFR
    .setColor('RANDOM')
   .setTimestamp()
 
- .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+ .addField("⦁`All types of codes in Blue Codes.™ Server 💬`⦁",' ‎ ')
  .addField("**#help-js-general-1  ➺      ⦁ كود البنق **⦁",' ‎ ')
  .addField("**#help-js-general-2  ➺      ⦁ كود القرعة ** ⦁",' ‎ ')
  .addField("**#help-js-general-3  ➺      ⦁ كود الافتار  ** ⦁",' ‎ ')	  
@@ -1026,7 +804,7 @@ https://pastebin.com/hP9VQpFR
  .addField("**#help-js-general-7  ➺      ⦁ كود صراحه** ⦁",' ‎ ')	  
 	  
 	  
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
    message.channel.send({embed});
 
@@ -1369,11 +1147,11 @@ ${thisMessage}\`\`\`
    .setColor('RANDOM')
   .setTimestamp()
 
-  .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("⦁`All types of codes in Blue Codes.™ Server 💬`⦁",' ‎ ')
   .addField("**#help-js-help-1  ➺      ⦁ كود هلب مع امبد يرسل بنفس الشات **⦁",' ‎ ')
    .addField("**#help-js-help-2  ➺      ⦁ كود هلب مزخرف بدون امبد ويرسل عالخاص ** ⦁",' ‎ ')
 		   
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -1437,13 +1215,13 @@ https://hastebin.com/emawayudib.bash
    .setColor('RANDOM')
   .setTimestamp()
 
-  .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+  .addField("⦁`All types of codes in Blue Codes.™ Server 💬`⦁",' ‎ ')
   .addField("**#help-js-bc-1  ➺      ⦁ برودكاست + للكل + مطور **⦁",' ‎ ')
   .addField("**#help-js-bc-2  ➺      ⦁ برودكاست + للكل + غير مطور ** ⦁",' ‎ ')
   .addField("**#help-js-bc-3  ➺      ⦁ برودكاست + للأونلاين + مع منشن + غير مطور **⦁",' ‎ ')
   .addField("**#help-js-bc-4  ➺      ⦁ برودكاست + للكل + مع منشن + غير مطور ** ⦁",' ‎ ')	   
 		   
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -1662,7 +1440,7 @@ if (message.content.startsWith(prefix + "uptime")) {
 .addField("❖ ❖ #ping ➾ عرض سرعه اتصال البوت ⦁",' ‎ ')
 .addField("❖ ❖ #server ➾ معلومات عن السيرفر ⦁",' ‎ ')
 
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -1726,13 +1504,13 @@ if (message.content === prefix + 'help-io') {
    .setColor('RANDOM')
   .setTimestamp()
 
- .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+ .addField("⦁`All types of codes in Blue Codes.™ Server 💬`⦁",' ‎ ')
   .addField("❧  **#help-py-source    ➺      ⦁ قسم السورس الأساسي** ⦁",' ‎ ')
    .addField("❧  **#help-py-admin     ➺      ⦁ قسم الأكواد الإدارية** ⦁",' ‎ ')
      .addField("❧  **سيتم اضافة المزيد ان شاء الله*** ⦁",' ‎ ')
 	  
 	  
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -1751,13 +1529,13 @@ if (message.content === prefix + 'help-io') {
    .setColor('RANDOM')
   .setTimestamp()
 
- .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+ .addField("⦁`All types of codes in Blue Codes.™ Server 💬`⦁",' ‎ ')
   .addField("❧  **#help-py-source-1    ➺      ⦁   السورس الأساسي + البيرفكس** ⦁",' ‎ ')
    .addField("❧  **#help-py-source-2     ➺      ⦁ السورس الاساسي من غير بير فكس** ⦁",' ‎ ')
 
 	  
 	  
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -1814,13 +1592,13 @@ if (message.content === prefix + 'help-io') {
    .setColor('RANDOM')
   .setTimestamp()
 
- .addField("⦁`All types of codes in BlueBot Codes. Server 💬`⦁",' ‎ ')
+ .addField("⦁`All types of codes in Blue Codes.™ Server 💬`⦁",' ‎ ')
   .addField("❧  **#help-py-admin-1    ➺      ⦁   كود اذا دخل البوت لسيرفر يعطيك معلومات عنه + امبد للبايثونوبس** ⦁",' ‎ ')
    .addField("❧  **#help-py-admin-2     ➺      ⦁ كود يغيرلك النك نيم حقك فالسيرفر** ⦁",' ‎ ')
    .addField("❧  **#help-py-admin-3     ➺      ⦁ كود يجيبلك الأيموجيز حقت السيرفر** ⦁",' ‎ ')
 	  
 	  
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -1907,7 +1685,7 @@ if (message.content === prefix + 'help3') {
  .addField("      تحت الصيانه     ",' ‎ ')
  .addField("  ╚[❖════════════❖]╝`⦁",' ‎ ')
 
- .setFooter('BlueBot Codes.')
+ .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
@@ -2018,7 +1796,7 @@ client.on("message", message => {
   .setTimestamp()
   .addField("سيرفر للمساعده والبرمجه",'https://discord.gg/ds5gPB5')
 
-       .setFooter('BlueBot Codes.')
+       .setFooter('Blue Codes.™')
 
 
    message.channel.send({embed});
