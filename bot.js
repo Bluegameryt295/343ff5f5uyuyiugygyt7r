@@ -637,6 +637,15 @@ https://pastebin.com/hP9VQpFR
 });
   
 
+
+
+
+
+
+
+
+
+
 const code = '#';
 
 client.on('message',async message => {
@@ -644,7 +653,7 @@ client.on('message',async message => {
   if(!message.channel.guild) return message.reply(' ');
     let rank = message.guild.member(message.author).roles.find('name', 'Support Team', ' Support PLUS ', ' Support Team Trail ');
     if (!rank) return message.channel.send(':octagonal_sign: **| يجب ان تمتلك رتبة Support Team  لأستخدام هذا الأمر.**');
-    let jscodes = message.guild.channels.find(`name`, "codes-js");
+    let jscodes = message.guild.channels.find(`name`, "discord-js");
     if(!jscodes) return message.channel.send(":x:لم اجد الروم الخاص بنشر الاكواد");
       let filter = m => m.author.id === message.author.id;
       let thisMessage;
@@ -1980,6 +1989,17 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
         logChannel.send(voiceLeave);
     }
 });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
