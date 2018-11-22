@@ -1986,7 +1986,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
 client.on('message', async message => {
     var command = message.content.toLowerCase().split(" ")[0];
-    var prefix = '-';
+    var prefix = '#';
     var name = '';
     var age = '';
     var fromwhere = '';
@@ -1994,7 +1994,7 @@ client.on('message', async message => {
     var filter = m => m.author.id === message.author.id;
     var subChannel = message.guild.channels.find(c => c.name === 'join-support');
    
-    if(command == prefix + 'join-support') {
+    if(command == prefix + 'تقديم') {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
