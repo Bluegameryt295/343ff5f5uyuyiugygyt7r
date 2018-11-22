@@ -2004,6 +2004,15 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
 
 
+
+
+
+
+
+
+
+
+
 client.on('message', async message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var prefix = '#';
@@ -2064,7 +2073,7 @@ client.on('message', async message => {
                                            
                                             yesSend.on('collect', r => {
                                                 msgS.delete();
-                                                message.channel.send(':white_check_mark: | تم تقديم طلبك بنجاح انتظر النتيجة في روم support-accept').then(msg => msg.delete(5000));
+                                                message.channel.send(':white_check_mark: | تم تقديم طلبك بنجاح انتظر النتيجة في روم accept-deny').then(msg => msg.delete(5000));
                                                
                                                 let subMsg = new Discord.RichEmbed()
                                                 .setAuthor(message.author.tag, message.author.avatarURL)
@@ -2090,7 +2099,7 @@ client.on('message', async message => {
                                                         msgS.delete();
                                                         message.author.send(`:white_check_mark: | تم قبولك سبورت بسيرفر **${message.guild.name}**`);
                                                         message.guild.member(message.author).addRole(modRole.id);
-                                                        message.guild.channels.find(r => r.name === 'support-accept').send(`:white_check_mark: | تم قبولك [ <@${message.author.id}> ]`);
+                                                        message.guild.channels.find(r => r.name === 'accept-deny').send(`:white_check_mark: | تم قبولك [ <@${message.author.id}> ]`);
                                                     });
                                                     noAcceptRe.on('collect', r => {
                                                         msgS.delete();
