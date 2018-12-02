@@ -2125,11 +2125,16 @@ client.on('message', async message => {
 });
 
 
-onst welcome = JSON.parse(fs.readFileSync('./welcomer.json' , 'utf8'));
+
+
+
+
+
+const welcome = JSON.parse(fs.readFileSync('./welcomer.json' , 'utf8'));
  
 client.on('message', message => {
            if (!message.channel.guild) return;
-
+ 
     let room = message.content.split(" ").slice(1);
     let findroom = message.guild.channels.find('name', `${room}`)
     if(message.content.startsWith(prefix + "setWelcomer")) {
@@ -2147,14 +2152,15 @@ message.channel.sendEmbed(embed)
 welcome[message.guild.id] = {
 channel: room,
 onoff: 'On',
-by: 'Off'
+by: 'On',
+dm: 'Off'
 }
 fs.writeFile("./welcomer.json", JSON.stringify(welcome), (err) => {
 if (err) console.error(err)
 })
     }})
 client.on('message', message => {
-  
+ 
     if(message.content.startsWith(prefix + "toggleWelcome")) {
         if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
@@ -2170,11 +2176,31 @@ client.on('message', message => {
           });
             })
           }
-          
+         
         })
-
+       
         client.on('message', message => {
-  
+ 
+    if(message.content.startsWith(prefix + "toggleDmwelcome")) {
+        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
+        if(!welcome[message.guild.id]) welcome[message.guild.id] = {
+          dm: 'Off'
+        }
+          if(welcome[message.guild.id].dm === 'Off') return [message.channel.send(`**The Welcome Dm Is __𝐎𝐍__ !**`), welcome[message.guild.id].dm = 'On']
+          if(welcome[message.guild.id].dm === 'On') return [message.channel.send(`**The Welcome Dm Is __𝐎𝐅𝐅__ !**`), welcome[message.guild.id].dm = 'Off']
+          fs.writeFile("./welcome.json", JSON.stringify(welcome), (err) => {
+            if (err) console.error(err)
+            .catch(err => {
+              console.error(err);
+          });
+            })
+          }
+         
+        })
+ 
+        client.on('message', message => {
+ 
             if(message.content.startsWith(prefix + "toggleInvitedby")) {
                 if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
                 if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
@@ -2190,11 +2216,35 @@ client.on('message', message => {
                   });
                     })
                   }
-                  
+                 
                 })
-                
-
+               
+ 
+client.on("guildMemberAdd", member => {
+            if(!welcome[member.guild.id]) welcome[member.guild.id] = {
+          onoff: 'Off'
+        }
+        if(welcome[member.guild.id].onoff === 'Off') return;
+    let welcomer = member.guild.channels.find('name', `${welcome[member.guild.id].channel}`)
+    let memberavatar = member.user.avatarURL
+      if (!welcomer) return;
+      if(welcomer) {
+         moment.locale('ar-ly');
+         var h = member.user;
+        let heroo = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(h.avatarURL)
+        .setAuthor(h.username,h.avatarURL)
+        .addField(': تاريخ دخولك الدسكورد',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)
+         .setFooter(`${h.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
+     welcomer.send({embed:heroo});
+      }})
+ 
+ 
 client.on('guildMemberAdd',async member => {
+            if(!welcome[member.guild.id]) welcome[member.guild.id] = {
+          onoff: 'Off'
+        }
     if(welcome[member.guild.id].onoff === 'Off') return;
     const Canvas = require('canvas');
     const jimp = require('jimp');
@@ -2254,22 +2304,25 @@ client.on('guildMemberAdd',async member => {
   });
   });
   });
-
+ 
   const invites = {};
-
+ 
 const wait = require('util').promisify(setTimeout);
-
+ 
 client.on('ready', () => {
   wait(1000);
-
+ 
   client.guilds.forEach(g => {
     g.fetchInvites().then(guildInvites => {
       invites[g.id] = guildInvites;
     });
   });
 });
-
+ 
 client.on('guildMemberAdd', member => {
+                    if(!welcome[member.guild.id]) welcome[member.guild.id] = {
+                  by: 'Off'
+                }
     if(welcome[member.guild.id].by === 'Off') return;
   member.guild.fetchInvites().then(guildInvites => {
     const ei = invites[member.guild.id];
@@ -2278,11 +2331,23 @@ client.on('guildMemberAdd', member => {
     const inviter = client.users.get(invite.inviter.id);
     const logChannel = member.guild.channels.find(channel => channel.name === `${welcome[member.guild.id].channel}`);
     if(!logChannel) return;
+      setTimeout(() => {
     logChannel.send(`Invited By: <@${inviter.id}>`);
+  },2000)
   });
 });
-
-
+ 
+client.on("guildMemberAdd", member => {
+                    if(!welcome[member.guild.id]) welcome[member.guild.id] = {
+                  dm: 'Off'
+                }
+        if(welcome[member.guild.id].dm === 'Off') return;
+  member.createDM().then(function (channel) {
+  return channel.send(`:rose:  ولكم نورت السيرفر:rose:
+:crown:اسم العضو  ${member}:crown:  
+انت العضو رقم ${member.guild.memberCount} `)
+}).catch(console.error)
+})
 
 
 
