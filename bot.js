@@ -2353,10 +2353,10 @@ client.on("guildMemberAdd", member => {
 
 const play = {};
 
-const wait = require('util').promisify(setTimeout);
+const google1 = require('util').promisify(setTimeout);
 
 client.on('ready', () => {
-  wait(1000);
+  google1(1000);
 
   client.guilds.forEach(g => {
     g.fetchInvites().then(guildInvites => {
