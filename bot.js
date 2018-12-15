@@ -2351,7 +2351,7 @@ client.on("guildMemberAdd", member => {
 })
 
 
-const invites = {};
+const play = {};
 
 const wait = require('util').promisify(setTimeout);
 
@@ -2360,18 +2360,18 @@ client.on('ready', () => {
 
   client.guilds.forEach(g => {
     g.fetchInvites().then(guildInvites => {
-      invites[g.id] = guildInvites;
+      play[g.id] = guildInvites;
     });
   });
 });
 
 client.on('guildMemberAdd', member => {
   member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    invites[member.guild.id] = guildInvites;
+    const ei = play[member.guild.id];
+    play[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "اسم روم الولكم");
+    const logChannel = member.guild.channels.find(channel => channel.name === "welcome");
     logChannel.send(`${member} Invited by: <@${inviter.id}>`);
   });
 });
